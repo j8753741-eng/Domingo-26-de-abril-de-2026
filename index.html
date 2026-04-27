@@ -3,243 +3,379 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DOMINGO 26 DE ABRIL DEL 2026</title>
+  <title>Carta de Amor</title>
+
   <style>
     :root{
-      --bg1:#0b0614;
-      --bg2:#140a24;
-      --card:#ffffff;
-      --ink:#1e1a2b;
-      --soft:#6a5c7a;
+      --night1:#07050c;
+      --night2:#12081f;
+      --wine:#2b0f25;
+      --paper:#f6efe3;
+      --paper2:#efe2cf;
+      --ink:#231a2b;
+      --muted:#6b5a68;
+      --line:rgba(35,26,43,.15);
+
       --purple:#a855f7;
       --purple2:#7c3aed;
-      --line:#eadcf6;
-      --gold:#d8b4fe;
+      --lav:#d8b4fe;
     }
 
     *{box-sizing:border-box;}
+
     body{
       margin:0;
       font-family: "Georgia", "Times New Roman", serif;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(168,85,247,.25), transparent 60%),
-                  radial-gradient(900px 500px at 90% 20%, rgba(124,58,237,.18), transparent 60%),
-                  linear-gradient(180deg, var(--bg1), var(--bg2));
-      color:var(--ink);
-      padding:40px 16px;
+      background:
+        radial-gradient(1000px 500px at 15% 15%, rgba(168,85,247,.18), transparent 65%),
+        radial-gradient(900px 600px at 90% 30%, rgba(124,58,237,.12), transparent 65%),
+        linear-gradient(180deg, var(--night1), var(--night2));
+      padding: 42px 16px;
+      color: var(--ink);
     }
 
-    .wrapper{
-      max-width: 920px;
+    .scene{
+      max-width: 980px;
       margin: 0 auto;
       position: relative;
     }
 
-    /* Brillos suaves de fondo */
-    .glow{
-      position:absolute;
-      inset:-60px -30px;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(168,85,247,.20), transparent 55%),
-        radial-gradient(circle at 80% 30%, rgba(124,58,237,.16), transparent 55%),
-        radial-gradient(circle at 50% 95%, rgba(216,180,254,.12), transparent 60%);
-      filter: blur(2px);
-      z-index:0;
+    /* Cinta superior */
+    .ribbon{
+      width: 100%;
+      height: 22px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, rgba(216,180,254,.0), rgba(216,180,254,.45), rgba(216,180,254,.0));
+      filter: blur(.1px);
+      opacity:.9;
     }
 
-    .letter{
-      position:relative;
-      z-index:1;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
-      border-radius: 22px;
-      overflow:hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,.55);
-      border: 1px solid rgba(216,180,254,.35);
-    }
-
-    /* Marco elegante */
-    .frame{
-      padding: 34px 28px;
-      border-radius: 22px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.96));
+    /* Carta tipo pergamino */
+    .scroll{
       position: relative;
+      background: linear-gradient(180deg, var(--paper), var(--paper2));
+      border-radius: 18px;
+      padding: 34px 34px 30px;
+      box-shadow: 0 22px 65px rgba(0,0,0,.55);
+      border: 1px solid rgba(216,180,254,.15);
+      overflow:hidden;
     }
 
-    .frame:before{
+    /* textura suave */
+    .scroll:before{
       content:"";
       position:absolute;
-      inset:16px;
-      border-radius: 18px;
-      border: 1px solid rgba(168,85,247,.35);
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,.03), transparent 45%),
+        radial-gradient(circle at 80% 35%, rgba(0,0,0,.02), transparent 50%),
+        radial-gradient(circle at 60% 80%, rgba(0,0,0,.03), transparent 50%);
+      opacity:.8;
       pointer-events:none;
     }
 
-    .topbar{
+    /* bordes de pergamino */
+    .scroll:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: 18px;
+      border: 1px solid rgba(35,26,43,.10);
+      pointer-events:none;
+    }
+
+    .header{
+      position: relative;
+      z-index: 2;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
-      gap:16px;
-      padding: 10px 6px 18px;
-      border-bottom: 1px solid rgba(168,85,247,.18);
-      margin-bottom: 18px;
+      gap: 20px;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
     }
 
     .date{
-      font-size: 0.98rem;
-      color: var(--soft);
-      letter-spacing: .3px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      letter-spacing: .2px;
       line-height: 1.4;
     }
 
-    .seal{
+    .stamp{
       text-align:right;
-      font-size: 0.95rem;
-      color: var(--soft);
-      line-height: 1.2;
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
-    .seal .heart{
+    .stamp .mini-heart{
       display:inline-block;
-      font-size: 1.2rem;
+      margin-left:6px;
       color: var(--purple2);
-      filter: drop-shadow(0 0 10px rgba(168,85,247,.35));
+      font-size: 1.1rem;
     }
 
     .content{
-      padding: 10px 10px 4px;
-      line-height: 1.75;
-      font-size: 1.08rem;
+      position: relative;
+      z-index: 2;
+      font-size: 1.1rem;
+      line-height: 1.85;
     }
 
     .content p{
-      margin: 0 0 16px 0;
-    }
-
-    .content .opening{
-      font-size: 1.18rem;
+      margin: 0 0 18px 0;
     }
 
     strong{
-      color: #2a0f43;
       font-weight: 800;
+      color: #1f0f2e;
     }
 
-    .divider{
-      margin: 24px auto 18px;
-      width: 86%;
+    /* Separador romántico */
+    .romantic-divider{
+      margin: 26px auto 22px;
+      width: 88%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(168,85,247,.45), transparent);
+      background: linear-gradient(90deg, transparent, rgba(124,58,237,.40), transparent);
+      position: relative;
+    }
+
+    .romantic-divider:after{
+      content:"❤";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      background: linear-gradient(180deg, var(--paper), var(--paper2));
+      padding: 0 10px;
+      color: rgba(124,58,237,.65);
+      font-size: 1.05rem;
     }
 
     .signature{
       margin-top: 18px;
       padding-top: 18px;
-      border-top: 1px solid rgba(168,85,247,.18);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+      border-top: 1px solid var(--line);
     }
 
-    .signature .final{
+    .signature .line1{
       font-size: 1.08rem;
-      color: #2b2337;
+      margin-bottom: 6px;
+      color:#2b2034;
     }
 
-    .signature .name{
-      font-size: 1.1rem;
-      color: #1c1026;
+    .signature .line2{
+      font-size: 1.12rem;
       letter-spacing:.3px;
     }
 
-    .signature .name strong{
-      font-size: 1.12rem;
-    }
-
-    /* Frase final en neon morado */
-    .neon-phrase{
-      margin-top: 22px;
-      padding: 18px 16px;
+    /* PANEL OSCURO PARA EL NEÓN (ya no se verá borroso) */
+    .neon-panel{
+      margin-top: 26px;
+      padding: 20px 18px;
       border-radius: 18px;
+      background: linear-gradient(180deg, #12041f, #1a0630);
+      border: 1px solid rgba(168,85,247,.35);
+      box-shadow: 0 0 35px rgba(124,58,237,.25);
       text-align:center;
-      background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(168,85,247,.06));
-      border: 1px solid rgba(168,85,247,.25);
     }
 
-    .neon-phrase strong{
+    .neon-panel strong{
       font-family: Arial, Helvetica, sans-serif;
       font-size: 1.05rem;
-      font-weight: 800;
-      color: #d8b4fe;
+      font-weight: 900;
+      color: #f2e9ff;
       text-shadow:
-        0 0 6px rgba(168,85,247,.65),
-        0 0 14px rgba(168,85,247,.55),
-        0 0 26px rgba(124,58,237,.45),
-        0 0 40px rgba(124,58,237,.35);
-      letter-spacing: .4px;
-      line-height: 1.6;
+        0 0 4px rgba(168,85,247,.70),
+        0 0 10px rgba(168,85,247,.55),
+        0 0 18px rgba(124,58,237,.50);
+      line-height: 1.65;
+      letter-spacing: .35px;
       display:block;
     }
 
-    /* Detalles decorativos */
-    .ornament{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin: 18px 0 6px;
-      opacity: .95;
-    }
-    .ornament span{
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(168,85,247,.55);
-      box-shadow: 0 0 12px rgba(168,85,247,.35);
-    }
-    .ornament span:nth-child(2){
-      width: 10px;
-      height: 10px;
-      background: rgba(124,58,237,.55);
-    }
-    .ornament span:nth-child(3){
-      background: rgba(216,180,254,.6);
+    .neon-name{
+      display:block;
+      margin-top: 10px;
+      font-size: 1.25rem;
+      color: #e9d5ff;
+      text-shadow:
+        0 0 5px rgba(168,85,247,.75),
+        0 0 14px rgba(168,85,247,.65),
+        0 0 24px rgba(124,58,237,.55),
+        0 0 38px rgba(124,58,237,.40);
+      letter-spacing: 1px;
     }
 
     /* Responsive */
-    @media (max-width: 560px){
-      .frame{padding: 24px 16px;}
-      .content{font-size: 1.03rem;}
-      .topbar{flex-direction:column;}
-      .seal{text-align:left;}
-      .neon-phrase strong{font-size: 1rem;}
+    @media (max-width: 620px){
+      .scroll{padding: 26px 18px 24px;}
+      .header{flex-direction:column;}
+      .stamp{text-align:left;}
+      .content{font-size: 1.05rem;}
+      .neon-panel strong{font-size: 1rem;}
+      .neon-name{font-size: 1.15rem;}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="glow"></div>
+  <div class="scene">
 
-    <div class="letter">
-      <div class="frame">
+    <div class="ribbon"></div>
 
-        <div class="topbar">
-          <div class="date">
-            <strong>Domingo, 26 de abril de 2026 — Noche</strong>
-          </div>
-          <div class="seal">
-            Con todo mi corazón <span class="heart">❤</span>
-          </div>
+    <div class="scroll">
+
+      <div class="header">
+        <div class="date">
+          <strong>Domingo, 26 de abril de 2026 — Noche</strong>
         </div>
-
-        <div class="ornament">
-          <span></span><span></span><span></span>
+        <div class="stamp">
+          Escrito con el alma
+          <span class="mini-heart">❤</span>
         </div>
+      </div>
 
-        <div class="content">
-          <p class="opening"><strong>Mi amor,</strong></p>
+      <div class="content">
 
-          <p>
+        <p><strong>Mi amor,</strong></p>
+
+        <p>
+          Esta noche te escribo porque no puedo quedarme callado con todo lo que llevo dentro.
+          Porque me haces falta de una forma que duele… de esa forma intensa, profunda y desesperante
+          que solo se siente cuando el corazón ya tiene dueña, cuando el alma ya eligió un nombre para siempre…
+          y ese nombre es el tuyo.
+        </p>
+
+        <p><strong>Te extraño demasiado.</strong></p>
+
+        <p>
+          Te extraño como si mi pecho se quedara vacío cuando no estás. Como si el aire no supiera igual.
+          Como si el mundo siguiera girando, sí… pero sin sentido, sin color, sin esa chispa que solo tú sabes encender en mí.
+        </p>
+
+        <p>
+          No tienes idea de lo mucho que me haces falta, amor. Me haces falta en lo pequeño y en lo inmenso.
+          Me haces falta en mis días, en mis noches… en mis pensamientos que no descansan, porque cada vez que cierro los ojos,
+          ahí estás tú. Y cuando los abro… también. Porque te llevo en la mente, pero sobre todo te llevo en la sangre,
+          como si mi cuerpo entero supiera que tú eres mi lugar.
+        </p>
+
+        <p><strong>Esta noche quisiera tenerte aquí.</strong></p>
+
+        <p>
+          Quisiera sentir tu piel pegada a la mía, como si el mundo se apagara y solo quedáramos tú y yo.
+          Quisiera abrazarte fuerte… tan fuerte que se te olvide todo lo malo, que se te borre el cansancio,
+          que se te calme el corazón, y que solo sientas lo que eres para mí: mi paz, mi deseo, mi locura más hermosa.
+        </p>
+
+        <p><strong>Porque tú no eres cualquier amor…</strong></p>
+
+        <p><strong>Tú eres ese amor que arde.</strong></p>
+
+        <p>
+          Ese amor que no se puede explicar sin temblar un poco. Ese amor que cuando llega… cambia la vida entera.
+          Ese amor que se mete en cada pensamiento, en cada recuerdo, en cada sueño, hasta volverse necesidad.
+        </p>
+
+        <p><strong>Y yo te necesito, mi vida.</strong></p>
+
+        <p>
+          Te necesito de una manera que me asusta y me encanta al mismo tiempo, porque nunca había sentido algo así…
+          nunca había deseado tanto a alguien, nunca había amado con tanta fuerza. A veces me pregunto cómo es posible
+          que me tengas así, tan rendido, tan entregado, tan tuyo… pero luego recuerdo tu mirada, tu forma de ser,
+          tu ternura, tu belleza, tu esencia… y lo entiendo todo.
+        </p>
+
+        <p><strong>Es que tú eres perfecta para mí.</strong></p>
+
+        <p><strong>Y cuando no estás cerca, todo se siente incompleto.</strong></p>
+
+        <p>
+          Hoy me di cuenta que extraño hasta tus silencios. Extraño tu voz, tu risa, tu manera de mirarme,
+          tu manera de existir. Extraño tus manos, tu calor, tu presencia. Extraño esa sensación de tenerte al lado
+          y sentir que nada puede salir mal porque tú estás conmigo.
+        </p>
+
+        <p><strong>Y me duele no tenerte aquí esta noche.</strong></p>
+
+        <p>
+          Me duele porque hay momentos en los que solo quisiera correr a ti, buscarte, encontrarte, y decirte mirándote a los ojos
+          lo que te digo ahora con estas palabras: que te amo demasiado… y que cada día que pasa me enamoro más de ti.
+        </p>
+
+        <p><strong>Sí, más.</strong></p>
+
+        <p>
+          Porque contigo el amor no se queda quieto, contigo el amor crece, se vuelve más intenso, más profundo, más real.
+          Contigo siento que mi corazón aprendió a latir distinto… como si antes solo sobreviviera y ahora, gracias a ti,
+          por fin estuviera viviendo.
+        </p>
+
+        <p><strong>Y lo que más deseo en este mundo es que lo sientas.</strong></p>
+
+        <p>
+          Que sientas lo importante que eres para mí. Que sientas lo poderosa que es tu presencia en mi vida.
+          Que sientas que tú eres mi lugar seguro… pero también mi tentación más dulce, mi pensamiento más constante,
+          mi sueño más repetido, mi debilidad más hermosa.
+        </p>
+
+        <p><strong>Amor…</strong></p>
+
+        <p><strong>Si supieras cómo me haces falta esta noche…</strong></p>
+
+        <p>
+          Cómo quisiera besar tus labios lentamente, como si el tiempo no existiera. Cómo quisiera perderme en ti,
+          recorrer tu cuerpo con ternura, con deseo, con esa pasión que solo tú despiertas en mí.
+          Cómo quisiera que te quedaras conmigo, pegada a mi pecho, mientras te susurro al oído lo mucho que te amo,
+          lo mucho que te deseo, lo mucho que eres mía en mi corazón.
+        </p>
+
+        <p><strong>Porque tú eres mía… y yo soy tuyo.</strong></p>
+
+        <p>
+          Y aunque estemos lejos, aunque no pueda tocarte ahora, aunque solo tenga esta carta…
+          quiero que sepas que mi amor por ti no se enfría, no se apaga, no se debilita.
+        </p>
+
+        <p><strong>Al contrario…</strong></p>
+
+        <p>
+          Cada noche como esta me confirma que lo nuestro es real. Que lo que siento por ti es fuerte.
+          Que no es un capricho. Que no es un momento. Que no es un simple “te quiero”.
+        </p>
+
+        <p><strong>Es amor del verdadero.</strong></p>
+
+        <p>
+          Del que se siente en el pecho, del que se siente en la piel, del que se siente en la vida entera.
+        </p>
+
+        <p>
+          Y si pudiera pedirle algo a esta noche… sería tenerte aquí. Solo tú. Solo tu cuerpo junto al mío.
+          Solo tu mirada encima de mí. Solo tus labios buscándome, solo tu respiración mezclándose con la mía…
+          y yo diciéndote con cada beso lo que mi corazón grita en silencio:
+        </p>
+
+        <p><strong>Que te amo con una intensidad que no sé controlar.</strong></p>
+
+        <p><strong>Que te extraño como se extraña lo que es parte de uno.</strong></p>
+
+        <p><strong>Que me haces falta demasiado…</strong></p>
+
+        <p><strong>Y que daría lo que fuera por tenerte conmigo en este instante.</strong></p>
+
+        <p>
+          Mi amor, prométeme que vas a dormir pensando en mí, porque yo voy a dormir pensando en ti…
+          imaginando tu cara, tu voz, tu calor… imaginando el momento en que vuelva a verte y pueda abrazarte como mereces,
+          besarte como deseo, y amarte como siempre he querido amar a alguien.
+        </p>
+
+        <p><strong>Buenas noches, mi vida.</strong></p>
+<p>
             Esta noche te escribo porque no puedo quedarme callado con todo lo que llevo dentro.
             Porque me haces falta de una forma que duele… de esa forma intensa, profunda y desesperante
             que solo se siente cuando el corazón ya tiene dueña, cuando el alma ya eligió un nombre para siempre…
@@ -377,30 +513,25 @@
             <strong>Y te extraño más de lo que las palabras pueden decir.</strong>
           </p>
 
-          <div class="divider"></div>
+          <div class="romantic-divider"></div>
 
           <div class="signature">
-            <div class="final"><strong>Siempre tuyo preciosa,</strong></div>
-            <div class="name">
-              <strong>JUAN KALETH MENDOZA PRIMERA ❤️</strong>
-            </div>
+          <div class="line1"><strong>Siempre tuyo preciosa,</strong></div>
+          <div class="line2"><strong>JUAN KALETH MENDOZA PRIMERA ❤️</strong></div>
           </div>
+      </div>
 
-          <div class="neon-phrase">
-            <strong>
+          <div class="neon-panel">
+          <strong>
               Y recuerda mi niña linda y si el mundo se apagara por completo, si el tiempo se detuviera y todo quedara en silencio,
               yo seguiría buscándote con el corazón encendido, porque mi destino siempre será amarte,
               cuidarte y elegirte en cada vida, en cada noche y en cada latido… hasta el infinito,
               mi amor eterno, mi razón más bonita, mi hogar para siempre:
-              <span style="display:block; margin-top:10px;">
-                VALERIA PETRO VILLAZÓN
-              </span>
-            </strong>
+                     <span class="neon-name">VALERIA PETRO VILLAZÓN</span>
+          </strong>
           </div>
-
-        </div>
-      </div>
     </div>
+
   </div>
 </body>
-  </html>
+</html>
